@@ -27,7 +27,7 @@ Socket::~Socket()
 
 bool Socket::create()
 {
-  m_sock = netstt ( AF_INET,
+  m_sock = socket ( AF_INET,
 		    SOCK_STREAM,
 		    0 );
 

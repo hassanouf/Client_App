@@ -76,15 +76,17 @@ COMM_MEDIA::~COMM_MEDIA()
 
 bool COMM_MEDIA_UnitTest() {
     COMM_MEDIA ch(TCPSocket);
-    std::string txS("Test Socket");
+    std::string txS("Test ");
     std::string rxS;
     std::cout << "Test strt\n";
-    if(ch.Open(TCPSocket , "localhost" , 30000)  == Success)  {
+    if(ch.Open(TCPSocket , "172.18.112.1" , 30000)  == Success)  {
         std::cout << "Comm Ch Open Success\n";
         if(ch.Send(TCPSocket ,txS) == Success)  {
             std::cout << "TX Success\n";
             if((ch.Recieve(TCPSocket,rxS) == Success)) {
                 std::cout << "RX Success\n";
+                std::cout << txS << "\n";
+                std::cout << rxS << "\n";
                 if(!rxS.compare(txS)) {
                     std::cout << "RX Same As TX\n";
                     if(ch.Close(TCPSocket) == Success) {
