@@ -76,7 +76,7 @@ COMM_MEDIA::~COMM_MEDIA()
 
 bool COMM_MEDIA_UnitTest() {
     COMM_MEDIA ch(TCPSocket);
-    std::string txS("Test ");
+    std::string txS("Test Socket");
     std::string rxS;
     std::cout << "Test strt\n";
     if(ch.Open(TCPSocket , "172.18.112.1" , 30000)  == Success)  {
