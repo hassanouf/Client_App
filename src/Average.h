@@ -3,7 +3,7 @@
 
 #include <vector>
 
-
+#define Averge_unit_test 3
 class Average
 {
 private:
@@ -14,6 +14,8 @@ public:
     int Calculate(std::vector<int> &Values) const;
 };
 
-
+#ifdef Averge_unit_test
+void Averge_UnitTest();
+#endif
 
 #endif //_Averge_H_

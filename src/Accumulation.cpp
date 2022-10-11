@@ -1,5 +1,9 @@
 #include "Accumulation.h"
 
+#ifdef Accumulation_unit_test
+#include <iostream>
+#endif
+
 Accumulation::Accumulation(int n) : samples(n) {}
 
 
@@ -14,3 +18,19 @@ int Accumulation::Calculate(std::vector<int> &Values) const {
     }
     return (sum);
 }
+
+#ifdef Accumulation_unit_test
+void Accumulation_UnitTest() {
+    int samples = 5;
+    std::vector<int> Values{1,2,3,4,5};
+
+    Accumulation accumulation(samples);
+
+    if(accumulation.Calculate(Values) == 15) {
+        std::cout << "Test Pass\n";
+    }
+    else {
+        std::cout << "Test Fail\n";
+    }
+}
+#endif

@@ -1,16 +1,11 @@
-#include "COMM_MEDIA.h"
+#include "Accumulation.h"
 #include <iostream>
 
 int main() {
 
-    std::cout << "Hello,Dell";
+    std::cout << "Hello,Dell\n";
     
-    if(COMM_MEDIA_UnitTest()) {
-        std::cout << "Comm Media test pass\n";
-    }
-    else {
-        std::cout << "Comm Media test fail\n";
-    }
+    Accumulation_UnitTest();
 
     return 0;
 }
