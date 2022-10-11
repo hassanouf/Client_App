@@ -15,7 +15,7 @@ Accumulation::~Accumulation()
 int Accumulation::Calculate(std::vector<int> &Values) const {
     int sum = 0;
     std::sort(Values.begin(), Values.end()); //ascending
-    sum = Values[4] - Values[0];
+    sum = Values[n-1] - Values[0];
     return (sum);
 }
 
