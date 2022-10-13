@@ -20,8 +20,10 @@ private:
     int accumul;
     std::string RawData;
     bool Ready;
+    std::string ip;
+    int port;
 public:
-    Client();
+    Client(std::string ip , int port);
     ~Client();
     bool waitRecv();
     void updateResults();

@@ -1,11 +1,11 @@
 #include "Client.h"
 #include <iostream>
 
-int main() {
+int main(int argc, char** argv) {
 
     std::cout << "Hello,Dell\n";
     
-    Client client;
+    Client client(std::string(argv[1]) , std::stoi(std::string(argv[2])));
 
     while (1)
     {

@@ -4,15 +4,15 @@
 
 const char Buff[10] = "Client.db";
 
-Client::Client() : ch(TCPSocket) , average(5) , accumulation(5) ,
-d(std::string(Buff))
+Client::Client(std::string ip , int port) : ch(TCPSocket) , average(5) , accumulation(5) , 
+d(std::string(Buff)) , ip(ip) , port(port)
 {
     this->counter = 0;
     this->avg = 0;
     this->accumul = 0;
     this->Ready = false;
 
-    ch.Open(TCPSocket , "172.18.112.1" , 30000);
+    ch.Open(TCPSocket , this->ip , this->port);
     d.Open();
     d.ExecuteQry(Create_Table, 0 , 0);
 }
