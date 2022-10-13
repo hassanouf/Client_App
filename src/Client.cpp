@@ -2,19 +2,25 @@
 #include <iostream>
 #include <sstream>
 
-Client::Client() : ch(TCPSocket) , average(5) , accumulation(5) 
+const char Buff[10] = "Client.db";
+
+Client::Client() : ch(TCPSocket) , average(5) , accumulation(5) ,
+d(std::string(Buff))
 {
     this->counter = 0;
-    //this->average = 0;
-    //this->accumul = 0;
+    this->avg = 0;
+    this->accumul = 0;
     this->Ready = false;
 
     ch.Open(TCPSocket , "172.18.112.1" , 30000);
+    d.Open();
+    d.ExecuteQry(Create_Table, 0 , 0);
 }
 
 Client::~Client()
 {
     ch.Close(TCPSocket);
+    d.Close();
 }
 
 bool Client::waitRecv() {
@@ -39,8 +45,11 @@ void Client::updateResults() {
 void Client::save() {
     if (this->Ready)
     {
-        std::cout << this->average.Calculate(this->values) << "\n";
-        std::cout << this->accumulation.Calculate(this->values) << "\n";
+        this->avg = this->average.Calculate(this->values) ;
+        this->accumul = this->accumulation.Calculate(this->values);
+        std::cout << this->avg << "\n";
+        std::cout << this->accumul << "\n";
+        d.ExecuteQry(INSERT_Operation, this->avg , this->accumul);
         this->values.clear();
         this->Ready = false;
     }
